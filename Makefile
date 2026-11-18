@@ -5,7 +5,8 @@ CFLAGS = -Wall -Wextra -Werror -pthread -Iinclude
 # Directories and files
 SRC = $(addprefix src/, main.c checkers.c initializations.c philosopher_routine.c \
       philosophers_actions.c utils.c validations.c)
-OBJ = $(SRC:.c=.o)
+OBJ_DIR = obj
+OBJ = $(SRC:src/%.c=$(OBJ_DIR)/%.o)
 NAME = philo
 
 # Rules
@@ -14,11 +15,12 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.c
+$(OBJ_DIR)/%.o: src/%.c
+	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)
