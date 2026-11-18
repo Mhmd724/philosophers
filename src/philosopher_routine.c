@@ -30,8 +30,9 @@ void	*multiple_philosophers(void *philo) // for more than one fork
 
 	philosopher = (t_philosopher *)philo;
 	time_to_sleep = philosopher->simulation->time_to_sleep;
-	if (philosopher->id % 2 == 0) // if the philosopher id is even, sleep for 1.5ms (to avoid deadlock)
-		usleep(1500);
+	if (philosopher->id % 2 == 0) // if the philosopher id is even, wait half of time_to_eat so odd ones take forks first
+		time_to_pass(philosopher->simulation->time_to_eat / 2,
+			philosopher->simulation);
 	while (!has_philosopher_died(philosopher->simulation)) // loop until a philosopher dies (eat, sleep, thinks)
 	{
 		eat(philosopher);
