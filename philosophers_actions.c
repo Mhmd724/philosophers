@@ -64,7 +64,7 @@ void	action_log(t_philosopher *philosopher, char *action)
 	pthread_mutex_unlock(&(philosopher->simulation->print));
 }
 
-// function to put the monitor thread as dead since their is a philosopher died or the simulation has ended(the philos eat all the meals)
+// function to put the monitor thread as dead since there is a philosopher died or the simulation has ended(the philos eat all the meals)
 void	monitor_death(t_simulation *simulation)
 {
 	int	i;
@@ -78,7 +78,7 @@ void	monitor_death(t_simulation *simulation)
 			pthread_mutex_lock(&simulation->is_eating); // this mutex is used for last_meal_time to be updated while (has_eaten for eat_count variable in philosopher struct)
 			if (get_timestamp() - simulation->philosophers[i].time_last_meal
 				> simulation->time_to_die)
-				handle_philosopher_death(simulation, i); // this loop is to check if a philosopher has died then go handle_death of thia philo
+				handle_philosopher_death(simulation, i); // this loop is to check if a philosopher has died then go handle_death of this philo
 			pthread_mutex_unlock(&simulation->is_eating);
 			usleep(100);
 			i++;
@@ -89,7 +89,7 @@ void	monitor_death(t_simulation *simulation)
 	}
 }
 
-// in this put the simulation->died = 1 (means philosoppher died) and print the message of the philosopher died
+// in this put the simulation->died = 1 (means philosopher died) and print the message of the philosopher died
 void	handle_philosopher_death(t_simulation *simulation, int i)
 {
 	pthread_mutex_lock(&simulation->monitor_die);

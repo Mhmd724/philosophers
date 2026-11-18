@@ -31,7 +31,7 @@ typedef struct s_philosopher
 	struct s_simulation	*simulation; // pointer to the simulation structure
 	pthread_t			philo_thread; // thread for the philosopher
 	int					id; // philosopher's id
-	int					eat_count; // number of meals eaten by the philosopher (important for the optional argument that is enetered (meals_to_eat))
+	int					eat_count; // number of meals eaten by the philosopher (important for the optional argument that is entered (meals_to_eat))
 	int					left_fork; // id of the left fork
 	int					right_fork; // id of the right fork
 	long int			time_last_meal; // timestamp of the last meal eaten by the philosopher
@@ -44,7 +44,7 @@ typedef struct s_simulation
 	pthread_mutex_t	print; // mutex for printing actions to the console (thread-safe) thread by thread prints
 	pthread_mutex_t	is_eating; // mutex to protect the eating state of the philosophers (last meal time variable)
 	pthread_mutex_t	has_eaten; // mutex to protect the eating count of the philosophers (eat_count variable)
-	pthread_mutex_t	monitor_die; // mutex to protect the death state of the philosophers (died variable) (monitor knows if a philosopher has died or not by  this variable)
+	pthread_mutex_t	monitor_die; // mutex to protect the death state of the philosophers (died variable) (monitor knows if a philosopher has died or not by this variable)
 	pthread_mutex_t	monitor_end; // mutex to protect the end of the simulation (finish_eat variable) (monitor knows if a philosopher has finished eating or not by this variable)
 	long int		start_time; // timestamp of the start of the simulation
 	int				nbs_philosophers; // number of philosophers
