@@ -64,8 +64,8 @@ void	action_log(t_philosopher *philosopher, char *action)
 	pthread_mutex_unlock(&(philosopher->simulation->print));
 }
 
-// function to put the moniter thread as dead since their is a philosopher died or the simulation has ended(the philos eat all the meals)
-void	moniter_death(t_simulation *simulation)
+// function to put the monitor thread as dead since their is a philosopher died or the simulation has ended(the philos eat all the meals)
+void	monitor_death(t_simulation *simulation)
 {
 	int	i;
 
@@ -92,9 +92,9 @@ void	moniter_death(t_simulation *simulation)
 // in this put the simulation->died = 1 (means philosoppher died) and print the message of the philosopher died
 void	handle_philosopher_death(t_simulation *simulation, int i)
 {
-	pthread_mutex_lock(&simulation->moniter_die);
+	pthread_mutex_lock(&simulation->monitor_die);
 	simulation->died = 1;
-	pthread_mutex_unlock(&simulation->moniter_die);
+	pthread_mutex_unlock(&simulation->monitor_die);
 	pthread_mutex_lock(&simulation->print);
 	printf("%ld %d %s\n",
 		get_timestamp() - simulation->start_time,

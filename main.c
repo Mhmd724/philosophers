@@ -13,36 +13,36 @@
 #include "my_philosophers.h"
 
 // start the simulation by creating the threads for each philosopher
-void	initiate_stimulation(t_simulation *stimulation)
+void	initiate_simulation(t_simulation *simulation)
 {
 	void	*task; // to hold the function pointer for the task to be executed by the threads
 	int		i;
 
 	i = 0;
-	if (stimulation->nbs_philosophers == 1)
+	if (simulation->nbs_philosophers == 1)
 		task = single_philosopher; // task pointer to the function for a single philosopher
 	else
 		task = multiple_philosophers; // task pointer to the function for multiple philosophers
-	stimulation->start_time = get_timestamp();
-	while (i < stimulation->nbs_philosophers)
+	simulation->start_time = get_timestamp();
+	while (i < simulation->nbs_philosophers)
 	{
-		stimulation->philosophers[i].time_last_meal = stimulation->start_time;
+		simulation->philosophers[i].time_last_meal = simulation->start_time;
 		if (pthread_create(
-				&stimulation->philosophers[i].philo_thread,
+				&simulation->philosophers[i].philo_thread,
 				NULL,
 				task,
-				&stimulation->philosophers[i]
+				&simulation->philosophers[i]
 			) != 0)
-			printf("Thread %d failed.\n", stimulation->philosophers[i].id);
+			printf("Thread %d failed.\n", simulation->philosophers[i].id);
 		i++;
 	}
 	if (task == multiple_philosophers)
-		moniter_death(stimulation);
+		monitor_death(simulation);
 }
 
 // wait for all the philosophers to finish their tasks and destroy the mutexes
 // used to synchronize the threads and ensure that they finish their tasks before exiting the program
-void	end_stimulation(t_simulation *simulation)
+void	end_simulation(t_simulation *simulation)
 {
 	int	i;
 
@@ -89,7 +89,7 @@ int	main(int argc, const char *argv[])
 		free(simulation.forks);
 		return (1);
 	}
-	initiate_stimulation(&simulation);
-	end_stimulation(&simulation);
+	initiate_simulation(&simulation);
+	end_simulation(&simulation);
 	return (0);
 }

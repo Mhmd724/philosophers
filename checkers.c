@@ -33,25 +33,25 @@ int	check_forks(t_philosopher *philo, t_fork *fork) // this function is to check
 
 int	has_philosopher_died(t_simulation *simulation) // to check if there is a philosopher died (simulation->died = 1 means that there is a philosopher died)
 {
-	pthread_mutex_lock(&simulation->moniter_die);
+	pthread_mutex_lock(&simulation->monitor_die);
 	if (simulation->died)
 	{
-		pthread_mutex_unlock(&simulation->moniter_die);
+		pthread_mutex_unlock(&simulation->monitor_die);
 		return (1);
 	}
-	pthread_mutex_unlock(&simulation->moniter_die);
+	pthread_mutex_unlock(&simulation->monitor_die);
 	return (0);
 }
 
 int	has_simulation_ended(t_simulation *simulation) // to check if the simulation has ended (simulation->finish_eat = 1 means that the simulation has ended)
 {
-	pthread_mutex_lock(&simulation->moniter_end);
+	pthread_mutex_lock(&simulation->monitor_end);
 	if (simulation->finish_eat)
 	{
-		pthread_mutex_unlock(&simulation->moniter_end);
+		pthread_mutex_unlock(&simulation->monitor_end);
 		return (1);
 	}
-	pthread_mutex_unlock(&simulation->moniter_end);
+	pthread_mutex_unlock(&simulation->monitor_end);
 	return (0);
 }
 
@@ -79,8 +79,8 @@ void	check_end_of_eating(t_simulation *simulation) // to check if all philosophe
 		i++;
 	if (i == simulation->nbs_philosophers)
 	{
-		pthread_mutex_lock(&simulation->moniter_end);
+		pthread_mutex_lock(&simulation->monitor_end);
 		simulation->finish_eat = 1;
-		pthread_mutex_unlock(&simulation->moniter_end);
+		pthread_mutex_unlock(&simulation->monitor_end);
 	}
 }

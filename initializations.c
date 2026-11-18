@@ -34,10 +34,10 @@ int	init_mutexes(t_simulation *simulation)
 		return (printf("Eat mutex initialization failed.\n"), 0);
 	if (pthread_mutex_init(&simulation->has_eaten, NULL))
 		return (printf("Die mutex initialization failed.\n"), 0);
-	if (pthread_mutex_init(&simulation->moniter_end, NULL))
-		return (printf("Moniter die check mutex initialization failed.\n"), 0);
-	if (pthread_mutex_init(&simulation->moniter_die, NULL))
-		return (printf("Moniter eat check mutex initialization failed.\n"), 0);
+	if (pthread_mutex_init(&simulation->monitor_end, NULL))
+		return (printf("Monitor die check mutex initialization failed.\n"), 0);
+	if (pthread_mutex_init(&simulation->monitor_die, NULL))
+		return (printf("Monitor eat check mutex initialization failed.\n"), 0);
 	return (1);
 }
 
@@ -80,8 +80,8 @@ void	destroy_mutexes(t_simulation *simulation)
 	pthread_mutex_destroy(&simulation->print);
 	pthread_mutex_destroy(&simulation->is_eating);
 	pthread_mutex_destroy(&simulation->has_eaten);
-	pthread_mutex_destroy(&simulation->moniter_end);
-	pthread_mutex_destroy(&simulation->moniter_die);
+	pthread_mutex_destroy(&simulation->monitor_end);
+	pthread_mutex_destroy(&simulation->monitor_die);
 	free(simulation->philosophers);
 	free(simulation->forks);
 }
