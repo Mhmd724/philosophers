@@ -82,13 +82,11 @@ int	main(int argc, const char *argv[])
 	if (!parse_arguments(&simulation, argc, argv))
 		return (1);
 	if (!init_philosophers(&simulation))
-	{
-		destroy_mutexes(&simulation);
 		return (1);
-	}
 	if (!init_mutexes(&simulation))
 	{
-		destroy_mutexes(&simulation);
+		free(simulation.philosophers);
+		free(simulation.forks);
 		return (1);
 	}
 	initiate_stimulation(&simulation);
