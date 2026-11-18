@@ -33,11 +33,11 @@ int	init_mutexes(t_simulation *simulation)
 	if (pthread_mutex_init(&simulation->is_eating, NULL))
 		return (printf("Eat mutex initialization failed.\n"), 0);
 	if (pthread_mutex_init(&simulation->has_eaten, NULL))
-		return (printf("Die mutex initialization failed.\n"), 0);
+		return (printf("Has eaten mutex initialization failed.\n"), 0);
 	if (pthread_mutex_init(&simulation->monitor_end, NULL))
-		return (printf("Monitor die check mutex initialization failed.\n"), 0);
+		return (printf("Monitor end mutex initialization failed.\n"), 0);
 	if (pthread_mutex_init(&simulation->monitor_die, NULL))
-		return (printf("Monitor eat check mutex initialization failed.\n"), 0);
+		return (printf("Monitor die mutex initialization failed.\n"), 0);
 	return (1);
 }
 
