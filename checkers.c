@@ -17,7 +17,7 @@ int	check_forks(t_philosopher *philo, t_fork *fork) // this function is to check
 	pthread_mutex_lock(&fork->fork_mutex);
 	if (!fork->philo_taken_by) // here if philo_taken_by is 0 take the id of the philo that wants to take the fork
 	{
-		action_log(philo, "has taken a fork.");
+		action_log(philo, "has taken a fork");
 		fork->philo_taken_by = philo->id;
 		pthread_mutex_unlock(&fork->fork_mutex);
 		return (1);
@@ -82,8 +82,5 @@ void	check_end_of_eating(t_simulation *simulation) // to check if all philosophe
 		pthread_mutex_lock(&simulation->moniter_end);
 		simulation->finish_eat = 1;
 		pthread_mutex_unlock(&simulation->moniter_end);
-		pthread_mutex_lock(&simulation->print);
-		printf("number of meals eaten: %d\n", simulation->meals_to_eat);
-		pthread_mutex_unlock(&simulation->print);
 	}
 }

@@ -36,7 +36,7 @@ void	eat(t_philosopher *philo)
 	}
 	// both available left and right forks then start eating
 	pthread_mutex_lock(&philo->simulation->is_eating);
-	action_log(philo, "is eating.");
+	action_log(philo, "is eating");
 	philo->time_last_meal = get_timestamp(); // time_last_meal is the time when the philosopher started eating
 	pthread_mutex_unlock(&philo->simulation->is_eating);
 	time_to_pass(philo->simulation->time_to_eat, philo->simulation); // pass the time to eat
@@ -99,6 +99,6 @@ void	handle_philosopher_death(t_simulation *simulation, int i)
 	printf("%ld %d %s\n",
 		get_timestamp() - simulation->start_time,
 		simulation->philosophers[i].id,
-		"died.");
+		"died");
 	pthread_mutex_unlock(&simulation->print);
 }

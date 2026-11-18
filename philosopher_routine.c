@@ -17,7 +17,7 @@ void	*single_philosopher(void *philosopher) // if one philosopher has entered th
 	t_philosopher	*philo;
 
 	philo = (t_philosopher *)philosopher;
-	action_log(philo, "has taken a fork.");
+	action_log(philo, "has taken a fork");
 	usleep(philo->simulation->time_to_die * 1000);
 	action_log(philo, "died");
 	return (NULL);
@@ -37,9 +37,9 @@ void	*multiple_philosophers(void *philo) // for more than one fork
 		eat(philosopher);
 		if (has_simulation_ended(philosopher->simulation))
 			break ;
-		action_log(philosopher, "is sleeping.");
+		action_log(philosopher, "is sleeping");
 		time_to_pass(time_to_sleep, philosopher->simulation); // to pass the time of sleeping
-		action_log(philosopher, "is thinking.");
+		action_log(philosopher, "is thinking");
 	}
 	return (NULL);
 }
