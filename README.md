@@ -58,14 +58,14 @@ Each line of output is `timestamp_in_ms philosopher_id action`.
 
 | File | Purpose |
 | --- | --- |
-| `main.c` | Argument parsing, starting and ending the simulation |
-| `validations.c` | Input checks |
-| `initializations.c` | Setting up and destroying forks, mutexes and philosophers |
-| `philosopher_routine.c` | Thread routines for one or several philosophers |
-| `philosophers_actions.c` | Eating, logging and the death monitor |
-| `checkers.c` | Thread-safe checks on forks and simulation state |
-| `utils.c` | `ft_atoi`, timestamps and a sleep that stops early when the simulation ends |
-| `my_philosophers.h` | Structs and prototypes |
+| `src/main.c` | Argument parsing, starting and ending the simulation |
+| `src/validations.c` | Input checks |
+| `src/initializations.c` | Setting up and destroying forks, mutexes and philosophers |
+| `src/philosopher_routine.c` | Thread routines for one or several philosophers |
+| `src/philosophers_actions.c` | Eating, logging and the death monitor |
+| `src/checkers.c` | Thread-safe checks on forks and simulation state |
+| `src/utils.c` | `ft_atoi`, timestamps and a sleep that stops early when the simulation ends |
+| `include/my_philosophers.h` | Structs and prototypes |
 
 ## Testing
 
